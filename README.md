@@ -1,6 +1,6 @@
 # openhab\_
 
-A [munin](http://http://munin-monitoring.org/] plugin to read
+A [munin](http://http://munin-monitoring.org/) plugin to read
 [openhab](http://www.openhab.org/) item states
 
 ## building
