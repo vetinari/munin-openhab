@@ -53,7 +53,7 @@ env.vlabel %rH
 env.label relative Humidity
 ```
 
-## groups
+## Groups
 The plugin supports groups as items. Only the items directly below the
 given group are used. Group items in an openHAB items file like
 ```
@@ -77,3 +77,12 @@ and create a symlink like
 As seen in the example above, the label uses `label_` and item name.
 
 The `env.server` setting defaults to `http://localhost:8080`
+
+### ignoring items in a group
+Items in a group may be ignored by setting the `env.item_filter REGEXP` for
+a section, e.g.
+```
+[openhab_grpSwitches]
+env.item_filter SwitchB$
+```
+would ignore items which end with "SwitchB".

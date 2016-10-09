@@ -126,8 +126,8 @@ func printConfig(item *Item) {
 	} else {
 		for _, member := range item.Members {
 			if !filtered(member) {
-				fmt.Fprintf(os.Stdout, "%s.label %s\n", item.Name, getEnv("label", item))
-				fmt.Fprintf(os.Stdout, "%s.draw %s\n", item.Name, getEnv("draw", item))
+				fmt.Fprintf(os.Stdout, "%s.label %s\n", member.Name, getEnv("label", member))
+				fmt.Fprintf(os.Stdout, "%s.draw %s\n", member.Name, getEnv("draw", member))
 			}
 		}
 	}
