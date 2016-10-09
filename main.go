@@ -115,7 +115,9 @@ func printConfig(item *Item) {
 	}
 
 	fmt.Fprintf(os.Stdout, "graph_title %s\n", getEnv("title", item))
-	fmt.Fprintf(os.Stdout, "graph_args --base 1000 -l 0\n")
+	if val := getEnv("graph_args", item); val != "" {
+		fmt.Fprintf(os.Stdout, "graph_args %s\n", val)
+	}
 	fmt.Fprintf(os.Stdout, "graph_category sensors\n")
 	if val := getEnv("vlabel", item); val != "" {
 		fmt.Fprintf(os.Stdout, "graph_vlabel %s\n", val)
@@ -190,6 +192,8 @@ func getEnv(name string, item *Item) string {
 		return val
 	}
 	switch name {
+	case "graph_args":
+		return ""
 	case "draw":
 		return "LINE"
 	case "label", "title":

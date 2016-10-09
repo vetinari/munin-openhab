@@ -21,7 +21,7 @@ Building for other architecture, select your
 [target arch](http://dave.cheney.net/2015/08/22/cross-compilation-with-go-1-5),
 e.g. linux arm:
 
-    env GOOS=linux GOARCH=arm go build -v go build -o openhab_ github.com/vetinari/munin-openhab
+    env GOOS=linux GOARCH=arm go build -v -o openhab_ github.com/vetinari/munin-openhab
 
 Install by copying the `openhab_` binary to the munin plugin directory on
 the target host.
@@ -48,6 +48,7 @@ env.label Temperature
 
 [openhab_OUT_Humidity]
 env.server http://localhost:8080
+env.graph_args -l 0 -u 100
 env.title Relative Humitdity Outside
 env.vlabel %rH
 env.label relative Humidity
