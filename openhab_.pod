@@ -1,0 +1,73 @@
+
+=head1 NAME
+
+openhab_ - wildcard plugin to monitor openhab item states
+
+=head1 CONFIGURATION
+
+This is a wildcard plugin. The wildcard suffix in the symlink is
+the item name of an openHAB item. Group items are supported, but
+only the direct members are evaluated, i.e. no nested groups.
+
+Examples:
+
+=over 4
+
+=item openhab_grpHumidity
+
+=item openhab_OUT_Temperature
+
+=back
+
+The following environment variables are used by this plugin:
+
+=over 4
+
+=item env.server
+
+Set server base url, defaults to C<http://localhost:8080>.
+
+=item env.item_filter
+
+Regular expression to ignore one or more items in a group.
+
+=item env.vlabel
+
+Set the vertical label for a graph, defaults to the item name.
+
+=item env.title
+
+Set the title for a graph, defaults to the item name.
+
+=item env.label
+
+Set a descriptive label, defaults to the item name.
+
+=item env.label_{itemName}
+
+Set the label for the item C<itemName>, useful in item groups.
+
+=back
+
+=head1 MAGIC MARKERS
+
+  #%# family=manual
+
+=head1 AUTHOR
+
+Hanno Hecker E<lt>vetinari@ankh-morp.orgE<gt>
+
+=head1 LICENSE
+
+GPLv2
+
+=head1 SEE ALSO
+
+The main L<README|https://github.com/vetinari/munin-openhab/blob/master/README.md>
+
+=head1 VERSION
+
+0.1
+
+=cut
+
