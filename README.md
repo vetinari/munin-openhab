@@ -40,11 +40,11 @@ Currently only `Number` and `Switch` items are supported.
 This plugin needs configuration in a file in `/etc/munin/plugin-conf.d/`
 
 ```
-[openhab_OUT_Temperature]
-env.server http://localhost:8080
-env.vlabel °C
-env.title Temperature Outside
-env.label Temperature
+[openhab_OUT_Pressure]
+evn.graph_scale no
+env.vlabel mbar
+env.title Pressure
+env.label pressure
 
 [openhab_OUT_Humidity]
 env.server http://localhost:8080
@@ -67,6 +67,8 @@ Add the `grpHumitdity` as item to the plugin config
 [openhab_grpHumidity]
 env.server http://localhost:8080
 env.title Relative Humitdity
+env.graph_args -l 0 -u 100
+env.graph_scale no
 env.vlabel %rH
 env.label_OUT_Humidity outdoor
 env.label_EG_LivingRoom_Humidity indoor, living room

@@ -118,6 +118,9 @@ func printConfig(item *Item) {
 	if val := getEnv("graph_args", item); val != "" {
 		fmt.Fprintf(os.Stdout, "graph_args %s\n", val)
 	}
+	if val := getEnv("graph_scale", item); val != "" {
+		fmt.Fprintf(os.Stdout, "graph_scale %s\n", val)
+	}
 	fmt.Fprintf(os.Stdout, "graph_category sensors\n")
 	if val := getEnv("vlabel", item); val != "" {
 		fmt.Fprintf(os.Stdout, "graph_vlabel %s\n", val)
@@ -192,14 +195,13 @@ func getEnv(name string, item *Item) string {
 		return val
 	}
 	switch name {
-	case "graph_args":
+	case "graph_args", "graph_scale", "vlabel":
+		// no defaults
 		return ""
 	case "draw":
 		return "LINE"
 	case "label", "title":
 		return item.Name
-	case "vlabel":
-		return ""
 	default:
 		return ""
 	}
