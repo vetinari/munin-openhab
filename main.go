@@ -91,9 +91,13 @@ func fetchItem(name string) (*Item, error) {
 	client := http.Client{}
 	res, err := client.Do(req)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to call OpenHAB")
+		return nil, errors.Wrap(err, "failed to call openHAB")
 	}
 	defer res.Body.Close()
+
+	if res.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("call to openHAB returned non OK status %d (%s)", res.StatusCode, res.Status)
+	}
 
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
@@ -166,14 +170,14 @@ func filtered(item *Item) bool {
 
 func printItem(item *Item) {
 	switch item.Type {
-	case "NumberItem":
+	case "NumberItem", "DimmerItem":
 	case "StringItem", "GroupItem":
 		return
-	case "SwitchItem":
-		switch item.State {
-		case "ON":
+	case "SwitchItem", "ContactItem":
+		switch strings.ToLower(item.State) {
+		case "on", "open":
 			item.State = "1"
-		case "OFF":
+		case "off", "closed":
 			item.State = "0"
 		default:
 			item.State = "0"
