@@ -34,14 +34,18 @@ To monitor a an item link openhab\_{item} to the plugin. E.g.
 
 will monitor the `OUT_Temperature` item.
 
-Currently only `Number` and `Switch` items are supported.
+Currently `Number`, `Dimmer`, `Switch` and `Contact` items are supported. Both `Switch`es and 
+`Contact`s are mapped to 1 for `on` / `open` and 0 for `off` / `closed`. `Number`s are returned
+as is, `Dimmer`s return their percentage value.
+
 
 ## plugin config
-This plugin needs configuration in a file in `/etc/munin/plugin-conf.d/`
+This plugin needs manual configuration in a file in `/etc/munin/plugin-conf.d/`
 
 ```
 [openhab_OUT_Pressure]
-evn.graph_scale no
+env.graph_scale no
+env.graph_args --alt-autoscale --alt-y-grid
 env.vlabel mbar
 env.title Pressure
 env.label pressure
@@ -53,6 +57,10 @@ env.title Relative Humitdity Outside
 env.vlabel %rH
 env.label relative Humidity
 ```
+
+The `env.graph_args` in the *openhab\_OUT\_Pressure* section result in a graph
+like ![pressure graph](./openhab_OUT_Pressure-week.png), otherwise it would quite
+flat, even with `env.graph_scale no`.
 
 ## Groups
 The plugin supports groups as items. Only the items directly below the
