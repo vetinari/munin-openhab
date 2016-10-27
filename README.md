@@ -59,8 +59,11 @@ env.label relative Humidity
 ```
 
 The `env.graph_args` in the *openhab\_OUT\_Pressure* section result in a graph
-like ![pressure graph](./openhab_OUT_Pressure-week.png), otherwise it would quite
-flat, even with `env.graph_scale no`.
+like
+
+![pressure graph](./openhab_OUT_Pressure-week.png)
+
+otherwise it would be quite flat, even with `env.graph_scale no`.
 
 ## Groups
 The plugin supports groups as items. Only the items directly below the
