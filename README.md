@@ -28,6 +28,8 @@ the target host.
 
 ## config
 
+...see also [plugin docs](https://github.com/vetinari/munin-openhab/blob/master/openhab_.pod)
+
 To monitor a an item link openhab\_{item} to the plugin. E.g.
 
     ln -s /usr/share/munin/plugins/openhab_ /etc/munin/plugins/openhab_OUT_Temperature

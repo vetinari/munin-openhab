@@ -27,6 +27,10 @@ The following environment variables are used by this plugin:
 
 Set server base url, defaults to C<http://localhost:8080>.
 
+=item env.category
+
+Set the category of this item, defaults to C<sensors>.
+
 =item env.item_filter
 
 Regular expression to ignore one or more items in a group.
@@ -46,6 +50,10 @@ Set a descriptive label, defaults to the item name.
 =item env.label_{itemName}
 
 Set the label for the item C<itemName>, useful in item groups.
+
+=item env.draw env.draw_{itemName}
+
+How to draw the graph, defaults to C<LINE1>.
 
 =back
 
